@@ -16,8 +16,10 @@ if [[ "$input" = "y" ]]; then
 fi
 SP="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 [ ! -d "$SP/bin" ]&&mkdir $SP/bin
-apt install curl -y
-curl -sSL https://dist.crystal-lang.org/apt/setup.sh | bash
+apt install curl sudo -y
+curl -sL "https://keybase.io/crystal/pgp_keys.asc" | sudo apt-key add -
+echo "deb https://dist.crystal-lang.org/apt crystal main" | sudo tee /etc/apt/sources.list.d/crystal.list
+sudo apt-get update
 apt install python3 nodejs ruby golang lua5.2 gcc perl php tcl crystal default-jre cmake git libedit-dev unlambda default-jdk julia -y
 dpkg -i *.deb
 /opt/rakudo-pkg/bin/add-rakudo-to-path
