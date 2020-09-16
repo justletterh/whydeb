@@ -1,0 +1,10 @@
+#!/bin/bash
+gcc o1.c -o o1
+go build w.go
+rustc d.rs
+javac credit.java
+crystal build \!1.cr
+chmod +x \!1
+chmod +x o1
+chmod +x w
+chmod +x d

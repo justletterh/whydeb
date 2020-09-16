@@ -1,0 +1,33 @@
+#!/bin/bash
+#checks if its running as root
+if [[ $EUID -ne 0 ]]; then
+   echo -e "This script must be run as root.\nExiting..." 
+   exit 126
+fi
+#sets the path var
+SP="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+#builds the executables for the compiled langs
+$SP/build
+python3 h.py
+node e.js
+lua l1.lua
+ruby l2.rb
+#runs the compiled executable for o1.c
+./o1
+julia space.jl
+#runs the compiled executable for w.go
+./w
+bash o2.bash
+perl r.pl
+php l3.php
+#runs the compiled executable for d.rs
+./d
+./\!1
+tclsh \!2.tcl
+./bin/brainfuck/build/brainfuck \!3.bf
+raku newline.raku
+#runs the compiled classfile for credit.java
+java credit
+bash contact.unl | unlambda
+#deletes the compiled executables and the classfile
+rm \!1 d o1 w credit.class

@@ -1,0 +1,37 @@
+#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+   echo -e "This script must be run as root.\nExiting..." 
+   exit 126
+fi
+echo "Install dependencies? [Y/n]"
+read -rsn1 input
+if [[ "$input" = "y" ]]; then
+    echo "Starting..."
+    elif [[ "$input" = "n" ]]; then
+    echo "Abort."
+    exit 130
+    else
+    echo "\"$input\" is not y or n, please try again"
+    exit 1
+fi
+SP="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+[ ! -d "$SP/bin" ]&&mkdir $SP/bin
+apt install curl -y
+curl -sSL https://dist.crystal-lang.org/apt/setup.sh | bash
+apt install python3 nodejs ruby golang lua5.2 gcc perl php tcl crystal default-jre cmake git libedit-dev unlambda default-jdk julia -y
+dpkg -i *.deb
+/opt/rakudo-pkg/bin/add-rakudo-to-path
+source /root/.profile
+apt remove apache2 -y
+apt autoremove -y
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+cd $SP/bin
+git clone https://github.com/fabianishere/brainfuck.git
+[ ! -d "$SP/bin/brainfuck/build" ]&&mkdir ./brainfuck/build
+cd ./brainfuck/build
+cmake ..
+make
+cd $SP
+chmod +x ./run
+chmod +x ./build
+echo "Done!!!"
