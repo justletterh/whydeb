@@ -28,6 +28,7 @@ tclsh \!2.tcl
 raku newline.raku
 #runs the compiled classfile for credit.java
 java credit
-bash contact.unl | unlambda
-#deletes the compiled executables and the classfile
-rm \!1 d o1 w credit.class
+#runs the compiled bash script and pipes it to the unlambda interpreter because its weird
+./contact | unlambda
+#deletes the compiled executables, the classfile, and the script
+rm \!1 d o1 w credit.class contact
