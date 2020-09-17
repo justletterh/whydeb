@@ -23,7 +23,6 @@ sudo apt-get update
 apt install python3 nodejs ruby golang lua5.2 gcc perl php tcl crystal default-jre cmake git libedit-dev unlambda default-jdk julia -y
 dpkg -i *.deb
 /opt/rakudo-pkg/bin/add-rakudo-to-path
-source /root/.profile
 apt remove apache2 -y
 apt autoremove -y
 curl https://sh.rustup.rs -sSf | sh -s -- -y
@@ -36,4 +35,5 @@ make
 cd $SP
 chmod +x ./run
 chmod +x ./build
+source /root/.profile
 echo "Done!!!"
