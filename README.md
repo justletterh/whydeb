@@ -3,4 +3,4 @@ do this cmd `chmod +x ./init&&./init&&./run`
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-###### <sup>gn</sup>
+###### <sup>(gn)</sup>
