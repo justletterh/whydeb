@@ -1,4 +1,6 @@
 #!/bin/bash
+#refreshes the PATH
+source /root/.profile
 #checks if its running as root
 if [[ $EUID -ne 0 ]]; then
    echo -e "This script must be run as root.\nExiting..." 
