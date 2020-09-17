@@ -34,6 +34,8 @@ php l3.php
 ./\!1
 tclsh \!2.tcl
 ./bin/brainfuck/build/brainfuck \!3.bf
+#raku angy
+source /root/.profile
 raku newline.raku
 #runs the compiled classfile for credit.java
 java credit
@@ -49,4 +51,4 @@ kotlin -classpath thank.jar ThankKt
 #deletes the compiled executables, the classfile, and the script
 #oh yea and the beam
 #aaaaaaaaaaand the jar
-rm \!1 d o1 w credit.class contact div1 welcome.beam div1.o div2 div1.hi thank.jar sorry div4 a.out
+rm \!1 d o1 w credit.class contact div1 welcome.beam div1.o div2 div1.hi thank.jar sorry div4
