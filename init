@@ -21,7 +21,12 @@ curl -sL "https://keybase.io/crystal/pgp_keys.asc" | sudo apt-key add -
 echo "deb https://dist.crystal-lang.org/apt crystal main" | sudo tee /etc/apt/sources.list.d/crystal.list
 wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
 sudo apt-get update
-apt install python3 nodejs ruby golang lua5.2 gcc perl php tcl crystal default-jre cmake git libedit-dev unlambda default-jdk ghc esl-erlang elixir nim julia -y
+apt install python3 nodejs ruby golang lua5.2 gcc perl php tcl crystal default-jre cmake git libedit-dev unlambda default-jdk ghc esl-erlang elixir libncurses5 clang libcurl4 libpython2.7 libpython2.7-dev nim julia -y
+wget https://swift.org/builds/swift-5.1.3-release/ubuntu1804/swift-5.1.3-RELEASE/swift-5.1.3-RELEASE-ubuntu18.04.tar.gz
+tar xzf swift-5.1.3-RELEASE-ubuntu18.04.tar.gz
+mv swift-5.1.3-RELEASE-ubuntu18.04 /opt/swift/
+echo "export PATH=/opt/swift/usr/bin:$PATH" >> /root/.bashrc
+rm swift-5.1.3-RELEASE-ubuntu18.04.tar.gz
 dpkg -i *.deb
 /opt/rakudo-pkg/bin/add-rakudo-to-path
 apt remove apache2 -y
@@ -36,6 +41,9 @@ make
 cd $SP
 chmod +x ./run
 chmod +x ./build
+curl -s https://get.sdkman.io | bash
 source /root/.profile
+source /root/.bashrc
+sdk install kotlin
 rm erlang-solutions_2.0_all.deb
 echo "Done!!!"

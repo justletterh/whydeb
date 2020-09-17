@@ -8,6 +8,9 @@ crystal build \!1.cr
 python3 unl.py
 erlc welcome.erl
 nim c --hints:off div2.nim
+kotlinc -d thank.jar thank.kt
+swiftc -o sorry sorry.swift
+g++ div4.cpp -o div4
 chmod +x \!1
 chmod +x o1
 chmod +x w

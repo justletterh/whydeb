@@ -1,6 +1,7 @@
 #!/bin/bash
 #refreshes the PATH
 source /root/.profile
+source /root/.bashrc
 #checks if its running as root
 if [[ $EUID -ne 0 ]]; then
    echo -e "This script must be run as root.\nExiting..." 
@@ -39,6 +40,13 @@ java credit
 #runs the compiled bash script and pipes it to the unlambda interpreter because its weird
 ./contact | unlambda
 elixir div3.exs
+#runs the compiled jar for thank.kt
+kotlin -classpath thank.jar ThankKt
+#runs the compiled executable for sorry.swift
+./sorry
+#runs the compiled executable for div4.cpp
+./div4
 #deletes the compiled executables, the classfile, and the script
 #oh yea and the beam
-rm \!1 d o1 w credit.class contact div1 welcome.beam div1.o div2 div1.hi
+#aaaaaaaaaaand the jar
+rm \!1 d o1 w credit.class contact div1 welcome.beam div1.o div2 div1.hi thank.jar sorry div4 a.out
