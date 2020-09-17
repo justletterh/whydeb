@@ -1,10 +1,13 @@
 #!/bin/bash
+ghc div1>>/dev/null
 gcc o1.c -o o1
 go build w.go
 rustc d.rs
 javac credit.java
 crystal build \!1.cr
 python3 unl.py
+erlc welcome.erl
+nim c --hints:off div2.nim
 chmod +x \!1
 chmod +x o1
 chmod +x w

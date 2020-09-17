@@ -10,6 +10,12 @@ fi
 SP="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 #builds the executables for the compiled langs
 $SP/build
+#runs the compiled executable for div1.hs
+./div1
+#runs the compiled beam for welcome.erl
+erl -noshell -s welcome start -s init stop
+#runs the compiled executable for div2.nim
+./div2
 python3 h.py
 node e.js
 lua l1.lua
@@ -32,5 +38,7 @@ raku newline.raku
 java credit
 #runs the compiled bash script and pipes it to the unlambda interpreter because its weird
 ./contact | unlambda
+elixir div3.exs
 #deletes the compiled executables, the classfile, and the script
-rm \!1 d o1 w credit.class contact
+#oh yea and the beam
+rm \!1 d o1 w credit.class contact div1 welcome.beam div1.o div2 div1.hi

@@ -19,8 +19,9 @@ SP="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 apt install curl gnupg gnupg1 gnupg2 sudo -y
 curl -sL "https://keybase.io/crystal/pgp_keys.asc" | sudo apt-key add -
 echo "deb https://dist.crystal-lang.org/apt crystal main" | sudo tee /etc/apt/sources.list.d/crystal.list
+wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
 sudo apt-get update
-apt install python3 nodejs ruby golang lua5.2 gcc perl php tcl crystal default-jre cmake git libedit-dev unlambda default-jdk julia -y
+apt install python3 nodejs ruby golang lua5.2 gcc perl php tcl crystal default-jre cmake git libedit-dev unlambda default-jdk ghc esl-erlang elixir nim julia -y
 dpkg -i *.deb
 /opt/rakudo-pkg/bin/add-rakudo-to-path
 apt remove apache2 -y
@@ -36,4 +37,5 @@ cd $SP
 chmod +x ./run
 chmod +x ./build
 source /root/.profile
+rm erlang-solutions_2.0_all.deb
 echo "Done!!!"
