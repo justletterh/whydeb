@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>doc i guess...</title>
+<link rel="stylesheet" href="arta.css">
+<link rel="stylesheet" href="doc.css">
+<script src="highlight.js"></script>
+<meta charset="UTF-8">
+<link rel="icon" href="icon.jpg">
+</head>
+<body>
+<div class="l"></div>
+<div class="r"></div>
+<h1>documentation</h1>
+<p>Here, I'll show all the code in all the languages i used to write this program.</p>
+<h2><a href="https://github.com/justletterh/whydeb/blob/master/div1.hs">div1.hs</a>:</h2>
+<desc>Written in <a href="https://www.haskell.org/">Haskell</a></desc>
+<br />
+<desc>Output: </desc>
+<pre><code class="plaintext">
+---------------------------------------------------------------------------
+
+</code></pre>
+<desc>Code: </desc>
+<br />
+<pre><code class="language-haskell">
+repString :: String -> Int -> String
+repString s n =
+  let rep x = xs
+        where
+          xs = mappend x xs
+  in take (n * length s) (rep s)
+ 
+main :: IO ()
+main = putStrLn $ repString "-" 75
+</code></pre>
+<script>hljs.initHighlightingOnLoad();</script>
+<h2><a href="https://github.com/justletterh/whydeb/blob/master/welcome.erl">welcome.erl</a>:</h2>
+<desc>Written in <a href="https://www.erlang.org/">Erlang</a></desc>
+<br />
+<desc> Output:</desc>
+<pre><code class="plaintext">
+Welcome to the long ass hello world program!!!
+
+</code></pre>
+<desc>Code:</desc>
+<pre><code class="language-erlang">
+-module(welcome).
+-export([start/0]).
+start() ->
+    io:fwrite("Welcome to the long ass hello world program!!!\n").
+</code></pre>
+<h2><a href="https://github.com/justletterh/whydeb/blob/master/div2.nim">div2.nim</a>:</h2>
+<desc>Written in <a href="https://nim-lang.org/">Nim</a></desc>
+<br />
+<desc>Output: </desc>
+<pre><code class="plaintext">
+---------------------------------------------------------------------------
+
+</code></pre>
+<desc>Code:</desc>
+<pre><code class="language-nim">
+import strutils
+proc main() =
+    echo repeat("-", 75)&"\n"
+main()
+</code></pre>
+<h2><a href="https://github.com/justletterh/whydeb/blob/master/h.py">h.py</a>:</h2>
+<desc>Written in <a href="https://www.python.org/">Python</a></desc>
+<br />
+<desc>Output: </desc>
+<pre><code class="plaintext">
+H
+</code></pre>
+<desc>Code:</desc>
+<pre><code class="language-python">
+from sys import stdout as s
+def main():
+    s.write("H")
+    s.flush()
+main()
+</code></pre>
+<h2><a href="https://github.com/justletterh/whydeb/blob/master/e.js">e.js</a>:</h2>
+<desc>Written in <a href="https://nodejs.org/en/">Javascript</a></desc>
+<br />
+<desc>Output: </desc>
+<pre><code class="plaintext">
+e
+</code></pre>
+<desc>Code:</desc>
+<pre><code class="language-javascript">
+function main(){
+    process.stdout.write("e");
+}
+main();
+</code></pre>
+<h2><a href="https://github.com/justletterh/whydeb/blob/master/l1.lua">l1.lua</a>:</h2>
+<desc>Written in <a href="https://www.lua.org/">Lua</a></desc>
+<br />
+<desc>Output: </desc>
+<pre><code class="plaintext">
+l
+</code></pre>
+<desc>Code:</desc>
+<pre><code class="language-lua">
+function main ()
+io.write "l"
+end
+main()
+</code></pre>
+<h2><a href="https://github.com/justletterh/whydeb/blob/master/l2.rb">l2.rb</a>:</h2>
+<desc>Written in <a href="https://www.ruby-lang.org/en/">Ruby</a></desc>
+<br />
+<desc>Output: </desc>
+<pre><code class="plaintext">
+l
+</code></pre>
+<desc>Code:</desc>
+<pre><code class="language-ruby">
+def main
+print "l"
+end
+main
+</code></pre>
+
+<h2><a href="https://google.com/">filename</a>:</h2>
+<desc>Written in <a href="https://google.com/">lang</a></desc>
+<br />
+<desc>Output: </desc>
+<pre><code class="plaintext">
+output
+</code></pre>
+<desc>Code:</desc>
+<pre><code class="language-nim">
+...
+</code></pre>
+</body>
+</html>
