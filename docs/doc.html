@@ -386,5 +386,85 @@ int main( ) {
 }
 </code></pre>
 <hr />
+<h1>utility</h1>
+<h2><a href="https://github.com/justletterh/whydeb/blob/master/init">init</a>:</h2>
+<desc>Installs the required dependancies</desc>
+<br />
+<desc>Notes:</desc>
+<br />
+<desc>TODO</desc>
+<br />
+<desc>Written in <a href="https://www.gnu.org/software/bash/">Bash</a></desc>
+<br />
+<desc>Code:</desc>
+<pre><code class="language-bash">
+#!/bin/bash
+if [[ $EUID -ne 0 ]]; then
+    echo -e "This script must be run as root.\nExiting..." 
+    exit 126
+fi
+echo "Install dependencies? [Y/n]"
+read -rsn1 input
+if [[ "$input" = "y" ]]; then
+    echo "Starting..."
+    elif [[ "$input" = "n" ]]; then
+    echo "Abort."
+    exit 130
+    else
+    echo "\"$input\" is not y or n, please try again"
+    exit 1
+fi
+SP="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+[ ! -d "$SP/bin" ]&&mkdir $SP/bin
+apt install curl gnupg gnupg1 gnupg2 sudo -y
+curl -sL "https://keybase.io/crystal/pgp_keys.asc" | sudo apt-key add -
+echo "deb https://dist.crystal-lang.org/apt crystal main" | sudo tee /etc/apt/sources.list.d/crystal.list
+wget https://packages.erlang-solutions.com/erlang-solutions_2.0_all.deb && sudo dpkg -i erlang-solutions_2.0_all.deb
+sudo apt-get update
+apt install python3 nodejs ruby golang lua5.2 gcc perl php tcl crystal default-jre cmake git libedit-dev unlambda default-jdk ghc esl-erlang elixir libncurses5 clang libcurl4 libpython2.7 libpython2.7-dev nim julia -y
+wget https://swift.org/builds/swift-5.1.3-release/ubuntu1804/swift-5.1.3-RELEASE/swift-5.1.3-RELEASE-ubuntu18.04.tar.gz
+tar xzf swift-5.1.3-RELEASE-ubuntu18.04.tar.gz
+mv swift-5.1.3-RELEASE-ubuntu18.04 /opt/swift/
+source /root/.profile
+source /root/.bashrc
+echo -e "\nexport PATH=/opt/swift/usr/bin:$PATH\n" >> /root/.bashrc
+rm swift-5.1.3-RELEASE-ubuntu18.04.tar.gz
+dpkg -i *.deb
+/opt/rakudo-pkg/bin/add-rakudo-to-path
+apt remove apache2 -y
+apt autoremove -y
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+cd $SP/bin
+git clone https://github.com/fabianishere/brainfuck.git
+[ ! -d "$SP/bin/brainfuck/build" ]&&mkdir ./brainfuck/build
+cd ./brainfuck/build
+cmake ..
+make
+cd $SP
+chmod +x ./run
+chmod +x ./build
+curl -s https://get.sdkman.io | bash
+source /root/.profile
+source /root/.bashrc
+sdk install kotlin
+rm erlang-solutions_2.0_all.deb
+echo "Done!!!"
+</code></pre>
+
+<h2><a href="https://google.com/">filename</a>:</h2>
+<desc>description</desc>
+<br />
+<desc>Notes:</desc>
+<br />
+<desc>things to note...</desc>
+<br />
+<desc>Written in <a href="https://google.com">lang</a></desc>
+<br />
+<desc>Code:</desc>
+<pre><code class="language-python">
+def main():
+  print("hello world")
+main()
+</code></pre>
 </body>
 </html>
