@@ -392,7 +392,7 @@ int main( ) {
 <br />
 <desc>Notes:</desc>
 <br />
-<desc>TODO</desc>
+<desc>you most likely want to run <pre><code class="plaintext">chmod +x ./init</code></pre> before you run it</desc>
 <br />
 <desc>Written in <a href="https://www.gnu.org/software/bash/">Bash</a></desc>
 <br />
@@ -450,21 +450,141 @@ sdk install kotlin
 rm erlang-solutions_2.0_all.deb
 echo "Done!!!"
 </code></pre>
-
-<h2><a href="https://google.com/">filename</a>:</h2>
-<desc>description</desc>
+<h2><a href="https://github.com/justletterh/whydeb/blob/master/run">run</a>:</h2>
+<desc>this is the script that runs all of the other scripts</desc>
 <br />
 <desc>Notes:</desc>
 <br />
-<desc>things to note...</desc>
+<desc>this depends on your PATH var alot</desc>
 <br />
-<desc>Written in <a href="https://google.com">lang</a></desc>
+<desc>Written in <a href="https://www.gnu.org/software/bash/">Bash</a></desc>
+<br />
+<desc>Code:</desc>
+<pre><code class="language-bash">
+#!/bin/bash
+#refreshes the PATH
+source /root/.profile
+source /root/.bashrc
+#checks if its running as root
+if [[ $EUID -ne 0 ]]; then
+    echo -e "This script must be run as root.\nExiting..." 
+    exit 126
+fi
+#sets the path var
+SP="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+#builds the executables for the compiled langs
+$SP/build
+#runs the compiled executable for div1.hs
+./div1
+#runs the compiled beam for welcome.erl
+erl -noshell -s welcome start -s init stop
+#runs the compiled executable for div2.nim
+./div2
+python3 h.py
+node e.js
+lua l1.lua
+ruby l2.rb
+#runs the compiled executable for o1.c
+./o1
+julia space.jl
+#runs the compiled executable for w.go
+./w
+bash o2.bash
+perl r.pl
+php l3.php
+#runs the compiled executable for d.rs
+./d
+./\!1
+tclsh \!2.tcl
+./bin/brainfuck/build/brainfuck \!3.bf
+#raku angy
+source /root/.profile
+raku newline.raku
+#runs the compiled classfile for credit.java
+java credit
+#runs the compiled bash script and pipes it to the unlambda interpreter because its weird
+./contact | unlambda
+elixir div3.exs
+#runs the compiled jar for thank.kt
+kotlin -classpath thank.jar ThankKt
+#runs the compiled executable for sorry.swift
+./sorry
+#runs the compiled executable for div4.cpp
+./div4
+#deletes the compiled executables, the classfile, and the script
+#oh yea and the beam
+#aaaaaaaaaaand the jar
+rm \!1 d o1 w credit.class contact div1 welcome.beam div1.o div2 div1.hi thank.jar sorry div4
+</code></pre>
+<h2><a href="https://github.com/justletterh/whydeb/blob/master/build">build</a>:</h2>
+<desc>this is the script that compiles all of the scripts that need to be compiled</desc>
+<br />
+<desc>Notes:</desc>
+<br />
+<desc>this depends on your PATH var alot, just like the run script</desc>
+<br />
+<desc>Written in <a href="https://www.gnu.org/software/bash/">Bash</a></desc>
+<br />
+<desc>Code:</desc>
+<pre><code class="language-bash">
+#!/bin/bash
+ghc div1>>/dev/null
+gcc o1.c -o o1
+go build w.go
+rustc d.rs
+javac credit.java
+crystal build \!1.cr
+python3 unl.py
+erlc welcome.erl
+nim c --hints:off div2.nim
+kotlinc -d thank.jar thank.kt
+swiftc -o sorry sorry.swift
+g++ div4.cpp -o div4
+chmod +x \!1
+chmod +x o1
+chmod +x w
+chmod +x d
+</code></pre>
+<h2><a href="https://github.com/justletterh/whydeb/blob/master/unl.py">unl.py</a>:</h2>
+<desc>this is a script i had to write to compile unlambda to a bash script that echos the unlambda code</desc>
+<br />
+<desc>Notes:</desc>
+<br />
+<desc>mega jank</desc>
+<br />
+<desc>Written in <a href="https://www.python.org/">python</a></desc>
 <br />
 <desc>Code:</desc>
 <pre><code class="language-python">
+from os import system as sys
+
+def get_str():
+    f=open("contact.unl","r")
+    o=f.read()
+    f.close()
+    return o
+def escape_str(s):
+    nl="""
+"""
+    s=s.replace("`",r"\`").replace(nl,r"\n")
+    s=s+r"\n"
+    s=f"echo -e \"{s}\"" 
+    return s
+def out(s):
+    f=open("contact","w+")
+    f.write("#!/bin/bash\n")
+    f.write(s)
+    f.close()
+def chmod():
+    sys("chmod +x ./contact")
 def main():
-  print("hello world")
+    s=escape_str(get_str())
+    out(s)
+    chmod()
+
 main()
 </code></pre>
+<hr />
+&#169;2020 h
 </body>
 </html>
